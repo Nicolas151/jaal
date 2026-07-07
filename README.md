@@ -1,7 +1,7 @@
-# JAAL — Rituel Beauté
+# JAAL Rituel Beauté
 
 Site vitrine statique pour **JAAL**, Maison de rituels beauté inspirée des
-traditions ancestrales du Maroc — soin & massage facial holistique à domicile.
+traditions ancestrales du Maroc : soin & massage facial holistique à domicile.
 
 ## Structure
 

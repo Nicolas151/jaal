@@ -1,8 +1,23 @@
-// JAAL — Rituel Beauté
+// JAAL · Rituel Beauté
 // Comportements front-end : menu mobile, révélations au scroll,
 // bouton retour en haut, formulaire de contact (mailto).
 
 document.addEventListener('DOMContentLoaded', () => {
+
+  /* ---------- Header transparent -> plein au scroll ---------- */
+  const header = document.getElementById('header');
+  const progressBar = document.getElementById('scroll-progress');
+
+  const onScroll = () => {
+    if (header) header.classList.toggle('is-scrolled', window.scrollY > 60);
+    if (progressBar) {
+      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+      const progress = docHeight > 0 ? (window.scrollY / docHeight) * 100 : 0;
+      progressBar.style.width = progress + '%';
+    }
+  };
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
 
   /* ---------- Menu mobile ---------- */
   const navToggle = document.getElementById('nav-toggle');
@@ -67,7 +82,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const reply = form.reply.value.trim();
       const message = form.message.value.trim();
 
-      const subject = `Demande de rituel JAAL — ${name}`;
+      const subject = `Demande de rituel JAAL pour ${name}`;
       const body = `Nom : ${name}\nContact : ${reply}\n\n${message}`;
 
       const mailtoUrl = `mailto:jaal.rituel.beaute@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
